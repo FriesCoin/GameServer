@@ -26,6 +26,13 @@ namespace GameServer
             Server.clients[_fromClient].cards = _cards;
             Console.WriteLine($"{_ards}");
             
+
+        }
+        public static void getPlayerCards(int _fromClient, Packet _packet){
+            int _clientIdCheck = _packet.ReadInt();
+            int _ards = _packet.ReadInt();
+            ServerSend.SendPlayerCards(_fromClient,_ards);
+            
         }
         public static void UDPTestReceived(int _fromClient, Packet _packet)
         {

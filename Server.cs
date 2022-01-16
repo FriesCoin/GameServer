@@ -121,7 +121,7 @@ namespace GameServer
                 { (int)ClientPackets.welcomeReceived, ServerHandle.WelcomeReceived },
                 { (int)ClientPackets.updTestReceived, ServerHandle.UDPTestReceived },
                 { (int)ClientPackets.addPlayerCards, ServerHandle.addPlayerCards },
-                { (int)ClientPackets.getPlayerCards, ServerSend.SendPlayerCards }
+                { (int)ClientPackets.getPlayerCards, ServerHandle.getPlayerCards }
             };
             Console.WriteLine("Initialized packets.");
         }

@@ -69,8 +69,8 @@ namespace GameServer
                 SendTCPData(_toClient, _packet);
             }
         }
-        public static void SendPlayerCards(int _toClient,Packet __packet){
-            int whoCards = __packet.ReadInt();
+        public static void SendPlayerCards(int _toClient,int whoCards){
+            
             using (Packet _packet = new Packet((int)ServerPackets.sendPlayerCards))
             {
                 _packet.Write(String.Join(",",Server.clients[whoCards].cards));
