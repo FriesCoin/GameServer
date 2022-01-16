@@ -18,9 +18,13 @@ namespace GameServer
             }
             // TODO: send player into game
         }
+
         public static void addPlayerCards(int _fromClient, Packet _packet){
-            string[] _cards = _packet.ReadString().Split(',');
+            int _clientIdCheck = _packet.ReadInt();
+            string _ards = _packet.ReadString();
+            string[] _cards = _ards.Split(',');
             Server.clients[_fromClient].cards = _cards;
+            Console.WriteLine($"{_ards}");
             
         }
         public static void UDPTestReceived(int _fromClient, Packet _packet)
