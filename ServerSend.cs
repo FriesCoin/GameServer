@@ -69,7 +69,17 @@ namespace GameServer
                 SendTCPData(_toClient, _packet);
             }
         }
+        public static void SendPlayerCards(int _toClient,Packet __packet){
+            int whoCards = __packet.ReadInt();
+            using (Packet _packet = new Packet((int)ServerPackets.sendPlayerCards))
+            {
+                _packet.Write(String.Join(",",Server.clients[whoCards].cards));
+                _packet.Write(_toClient);
 
+                SendTCPData(_toClient, _packet);
+            }
+        }
+        
         public static void UDPTest(int _toClient)
         {
             using (Packet _packet = new Packet((int)ServerPackets.udpTest))

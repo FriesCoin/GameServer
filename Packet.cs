@@ -8,14 +8,18 @@ namespace GameServer
     public enum ServerPackets
     {
         welcome = 1,
-        udpTest
+        udpTest,
+        
+        sendPlayerCards
     }
 
     /// <summary>Sent from client to server.</summary>
     public enum ClientPackets
     {
         welcomeReceived = 1, 
-        updTestReceived
+        updTestReceived,
+        addPlayerCards,
+        getPlayerCards
     }
 
     public class Packet : IDisposable
