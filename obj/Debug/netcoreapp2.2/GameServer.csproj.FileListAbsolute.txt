@@ -1,0 +1,11 @@
+/Users/Damian/Documents/GitHub/GameServer/bin/Debug/netcoreapp2.2/GameServer.deps.json
+/Users/Damian/Documents/GitHub/GameServer/bin/Debug/netcoreapp2.2/GameServer.runtimeconfig.json
+/Users/Damian/Documents/GitHub/GameServer/bin/Debug/netcoreapp2.2/GameServer.runtimeconfig.dev.json
+/Users/Damian/Documents/GitHub/GameServer/bin/Debug/netcoreapp2.2/GameServer.dll
+/Users/Damian/Documents/GitHub/GameServer/bin/Debug/netcoreapp2.2/GameServer.pdb
+/Users/Damian/Documents/GitHub/GameServer/obj/Debug/netcoreapp2.2/GameServer.csprojAssemblyReference.cache
+/Users/Damian/Documents/GitHub/GameServer/obj/Debug/netcoreapp2.2/GameServer.csproj.CoreCompileInputs.cache
+/Users/Damian/Documents/GitHub/GameServer/obj/Debug/netcoreapp2.2/GameServer.AssemblyInfoInputs.cache
+/Users/Damian/Documents/GitHub/GameServer/obj/Debug/netcoreapp2.2/GameServer.AssemblyInfo.cs
+/Users/Damian/Documents/GitHub/GameServer/obj/Debug/netcoreapp2.2/GameServer.dll
+/Users/Damian/Documents/GitHub/GameServer/obj/Debug/netcoreapp2.2/GameServer.pdb
