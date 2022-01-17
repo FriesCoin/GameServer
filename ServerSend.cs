@@ -57,7 +57,14 @@ namespace GameServer
                 }
             }
         }
+        public static void SendCard(int _fromClient, int cardType){
+            using (Packet _packet = new Packet((int)ServerPackets.cardTrowed))
+            {
+                _packet.Write(cardType);
 
+                SendTCPDataToAll(_fromClient, _packet);
+            }
+        }
         #region Packets
         public static void Welcome(int _toClient, string _msg)
         {
@@ -69,17 +76,7 @@ namespace GameServer
                 SendTCPData(_toClient, _packet);
             }
         }
-        public static void SendPlayerCards(int _toClient,int whoCards){
-            
-            using (Packet _packet = new Packet((int)ServerPackets.sendPlayerCards))
-            {
-                _packet.Write(String.Join(",",Server.clients[whoCards].cards));
-                _packet.Write(_toClient);
 
-                SendTCPData(_toClient, _packet);
-            }
-        }
-        
         public static void UDPTest(int _toClient)
         {
             using (Packet _packet = new Packet((int)ServerPackets.udpTest))

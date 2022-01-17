@@ -9,17 +9,15 @@ namespace GameServer
     {
         welcome = 1,
         udpTest,
-        
-        sendPlayerCards
+        cardTrowed,
     }
 
     /// <summary>Sent from client to server.</summary>
     public enum ClientPackets
     {
-        welcomeReceived = 1, 
+        welcomeReceived = 1,
         updTestReceived,
-        addPlayerCards,
-        getPlayerCards
+        cardTrowed
     }
 
     public class Packet : IDisposable
