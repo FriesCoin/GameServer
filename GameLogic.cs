@@ -8,6 +8,7 @@ namespace GameServer
     {
         public static void Update()
         {
+            ServerSend.SendWhoTurn();
             ThreadManager.UpdateMain();
         }
     }

@@ -11,7 +11,6 @@ namespace GameServer
         public static int dataBufferSize = 4096;
 
         public int id;
-        Player player;
         public TCP tcp;
         public UDP udp;
 

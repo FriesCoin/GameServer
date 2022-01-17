@@ -10,6 +10,9 @@ namespace GameServer
         welcome = 1,
         udpTest,
         cardTrowed,
+        PlayerEnter,
+        PlayerInRoom,
+        WhoTurns
     }
 
     /// <summary>Sent from client to server.</summary>
@@ -160,6 +163,30 @@ namespace GameServer
         {
             Write(_value.Length); // Add the length of the string to the packet
             buffer.AddRange(Encoding.ASCII.GetBytes(_value)); // Add the string itself
+        }
+        public void Write(string[] _value){
+            Write(string.Join(',',_value));
+        }
+        public void Write(int[] _value)
+        {
+            string[] stringArr = new string[_value.Length];
+            for (int i = 0; i < _value.Length; i++)
+            {
+                stringArr[i] = _value[i].ToString();
+            }
+            Write(string.Join(",",stringArr));
+        }
+        public void Write(Player[] _value){
+            string[] namesArr = new string[_value.Length];
+            int[] idArr = new int[_value.Length];
+            for (int i = 0; i < _value.Length; i++)
+            {
+                namesArr[i] = _value[i].username;
+                idArr[i] = _value[i].id;
+            }
+            Write(namesArr);
+            Write(idArr);
+
         }
         #endregion
 
@@ -331,6 +358,32 @@ namespace GameServer
             {
                 throw new Exception("Could not read value of type 'string'!");
             }
+        }
+        public int[] ReadIntArr()
+        {
+            string[] stringArr = ReadString().Split(',');
+            int[] intArr = new int[stringArr.Length];
+            for (int i = 0; i < stringArr.Length; i++)
+            {
+                intArr[i] = Int32.Parse(stringArr[i]);
+            }
+            return intArr;
+        }
+        public string[] ReadStringArr()
+        {
+            string[] stringArr = ReadString().Split(',');
+            return stringArr;
+        }
+        public Player[] ReadPlayerArr(){
+            string[] names = ReadStringArr();
+            int[] ids = ReadIntArr();
+
+            Player[] players = new Player[names.Length];
+            for (int i = 0; i < names.Length; i++)
+            {
+                players[i] = new Player(ids[i],names[i]);
+            }
+            return players;
         }
         #endregion
 

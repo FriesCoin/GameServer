@@ -57,6 +57,30 @@ namespace GameServer
                 }
             }
         }
+        public static void SendPlayerList(List<Player> playerList,int _toClient){
+            using (Packet _packet = new Packet((int)ServerPackets.PlayerInRoom))
+            {
+                _packet.Write(playerList.ToArray());
+                SendTCPData(_toClient, _packet);
+            }
+        }
+        public static void SendWhoTurn(){
+            using (Packet _packet = new Packet((int)ServerPackets.WhoTurns))
+            {
+                _packet.Write(Database.whoTurns);
+
+                SendUDPDataToAll(_packet);
+            }
+        }
+        public static void SendPlayerName(int _fromClient, string playerName){
+            using (Packet _packet = new Packet((int)ServerPackets.PlayerEnter))
+            {
+                _packet.Write(_fromClient);
+                _packet.Write(playerName);
+
+                SendTCPDataToAll(_fromClient, _packet);
+            }
+        }
         public static void SendCard(int _fromClient, int cardType){
             using (Packet _packet = new Packet((int)ServerPackets.cardTrowed))
             {
