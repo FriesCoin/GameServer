@@ -64,6 +64,13 @@ namespace GameServer
                 SendTCPData(_toClient, _packet);
             }
         }
+        public static void SendAnotherServer(int _toClient){
+            using (Packet _packet = new Packet((int)ServerPackets.serverFull))
+            {
+                _packet.Write("tryAnotherServer");
+                SendTCPData(_toClient, _packet);
+            }
+        }
         public static void SendWhoTurn(){
             using (Packet _packet = new Packet((int)ServerPackets.WhoTurns))
             {

@@ -11,7 +11,10 @@ namespace GameServer
         {
             int _clientIdCheck = _packet.ReadInt();
             string _username = _packet.ReadString();
-
+            if(_clientIdCheck==5){
+                ServerSend.SendAnotherServer(_fromClient);
+                return;
+            }
             Console.WriteLine($"{Server.clients[_fromClient].tcp.socket.Client.RemoteEndPoint} connected successfully and is now player {_username}.");
             if (_fromClient != _clientIdCheck)
             {

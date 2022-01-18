@@ -12,7 +12,8 @@ namespace GameServer
         cardTrowed,
         PlayerEnter,
         PlayerInRoom,
-        WhoTurns
+        WhoTurns,
+        serverFull
     }
 
     /// <summary>Sent from client to server.</summary>
