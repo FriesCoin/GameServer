@@ -15,7 +15,7 @@ namespace GameServer
             Thread mainThread = new Thread(new ThreadStart(MainThread));
             mainThread.Start();
 
-            Server.Start(5, 26950);
+            Server.Start(5, 26952);
         }
 
         private static void MainThread()

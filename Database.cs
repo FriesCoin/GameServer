@@ -12,5 +12,10 @@ namespace GameServer
         public Database(){
             
         }
+        public static void reset(){
+            whoTurns = 1;
+            Players = new List<Player>();
+            cardsPlayed = new List<int>();
+        }
     }
 }

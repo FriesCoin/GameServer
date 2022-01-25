@@ -13,7 +13,9 @@ namespace GameServer
         PlayerEnter,
         PlayerInRoom,
         WhoTurns,
-        serverFull
+        serverFull,
+	    GameEnds,
+	    PlayerSendMsg,
     }
 
     /// <summary>Sent from client to server.</summary>
@@ -21,7 +23,10 @@ namespace GameServer
     {
         welcomeReceived = 1,
         updTestReceived,
-        cardTrowed
+        cardTrowed,
+        PlayerWin,
+        SkipTurn,
+	    SendMsg,
     }
 
     public class Packet : IDisposable

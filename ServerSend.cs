@@ -70,6 +70,22 @@ namespace GameServer
                 _packet.Write("tryAnotherServer");
                 SendTCPData(_toClient, _packet);
             }
+            Server.clients[4].Disconnect();
+        }
+        public static void MSGSEND(int _toClient,string msg){
+            using (Packet _packet = new Packet((int)ServerPackets.PlayerSendMsg))
+            {
+                _packet.Write(msg);
+                SendTCPDataToAll(_packet);
+            }
+        }
+        public static void EndGame(int _fromClient){
+            using (Packet _packet = new Packet((int)ServerPackets.GameEnds))
+            {
+                _packet.Write(_fromClient);
+
+                SendUDPDataToAll(_fromClient,_packet);
+            }
         }
         public static void SendWhoTurn(){
             using (Packet _packet = new Packet((int)ServerPackets.WhoTurns))
@@ -105,16 +121,6 @@ namespace GameServer
                 _packet.Write(_toClient);
 
                 SendTCPData(_toClient, _packet);
-            }
-        }
-
-        public static void UDPTest(int _toClient)
-        {
-            using (Packet _packet = new Packet((int)ServerPackets.udpTest))
-            {
-                _packet.Write("A test packet for UDP.");
-
-                SendUDPData(_toClient, _packet);
             }
         }
         #endregion

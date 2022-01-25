@@ -11,7 +11,8 @@ namespace GameServer
         {
             int _clientIdCheck = _packet.ReadInt();
             string _username = _packet.ReadString();
-            if(_clientIdCheck==5){
+            
+            if(_fromClient==5){
                 ServerSend.SendAnotherServer(_fromClient);
                 return;
             }
@@ -26,6 +27,15 @@ namespace GameServer
 
             // TODO: send player into game
         }
+        public static void SkipTurn(int _fromClient, Packet _packet){
+            if(_fromClient == Database.whoTurns){
+                Database.whoTurns+=1;
+            }
+        }
+        public static void PlayerWin(int _fromClient, Packet _packet){
+            Database.reset();
+            ServerSend.EndGame(_fromClient);
+        }
         public static void cardTrowed(int _fromClient, Packet _packet){
             int card = _packet.ReadInt();
             if(Database.whoTurns != 4){
@@ -37,11 +47,10 @@ namespace GameServer
             Database.cardsPlayed.Add(card);
             Console.WriteLine($"Player trowed card {card} ");
         }
-        public static void UDPTestReceived(int _fromClient, Packet _packet)
-        {
-            string _msg = _packet.ReadString();
-
-            Console.WriteLine($"Received packet via UDP. Contains message: {_msg}");
+        public static void PlayerSendMsg(int _fromClient, Packet _packet){
+            string msg = _packet.ReadString();
+            Console.WriteLine($"MSG : {msg}");
+            ServerSend.MSGSEND(_fromClient,msg);
         }
     }
 }
